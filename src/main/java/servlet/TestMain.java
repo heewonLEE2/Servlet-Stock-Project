@@ -22,7 +22,7 @@ public class TestMain {
 			stockService.getStockDiviList("삼성전자").stream().forEach(System.out::println);
 			
 //			 jsonService.getStockJsonList().stream().forEach(System.out::println);
-			System.out.println("test");
+
 			//stockInfoService.getStockInfoList("삼성전자").stream().forEach(System.out::println);
 		}catch(IOException ioe) {
 			ioe.printStackTrace();
