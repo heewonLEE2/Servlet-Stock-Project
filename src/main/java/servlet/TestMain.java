@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
+import model.apiUtil.StockJson;
 import model.service.JsonService;
 import model.service.StockInfoService;
 import model.service.StockService;
@@ -20,6 +21,7 @@ public class TestMain {
 		try {
 			
 			stockService.getStockDiviList("삼성전자").stream().forEach(System.out::println);
+			StockJson.patchJson("1", false);
 			
 //			 jsonService.getStockJsonList().stream().forEach(System.out::println);
 

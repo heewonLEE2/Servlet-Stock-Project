@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
+<script src="../js/test.js" defer></script>
+</head>
+<body>
+	<button id="mainBtn">servlet에 요청보내기</button>
+	<button id="jsonBtn">json서버에 요청보내기</button>
+	<button id="stockInfoBtn">stockInfoServlet 서버에 요청보내기</button>
+	<%@include file="footer.jsp" %>	
+</body>
+</html>
