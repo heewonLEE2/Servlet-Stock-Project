@@ -22,6 +22,11 @@ public class JsonServiceImpl implements JsonService{
 		return jsonDao.getStockJsonList();
 	}
 	
+	@Override
+	public void putJson(String id, Boolean isLike) throws IOException {
+		jsonDao.putJson(id, isLike);
+	}
+	
 }
 
 
