@@ -21,7 +21,7 @@ public class TestMain {
 		try {
 			
 			stockService.getStockDiviList("삼성전자").stream().forEach(System.out::println);
-			StockJson.patchJson("1", false);
+//			StockJson.patchJson("1", false);
 			
 //			 jsonService.getStockJsonList().stream().forEach(System.out::println);
 
