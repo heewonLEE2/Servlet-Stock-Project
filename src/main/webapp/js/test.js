@@ -4,7 +4,7 @@ const stockInfoBtn = document.getElementById("stockInfoBtn");
 
 mainBtn.addEventListener("click", function () {
   axios
-    .get("http://localhost:8080/FirstServlet")
+    .get("http://localhost:8888/FirstServlet")
     .then(function (response) {
 	  console.log(response);
       console.log(response.data);
@@ -16,7 +16,7 @@ mainBtn.addEventListener("click", function () {
 
 jsonBtn.addEventListener("click", function () {
   axios
-    .get("http://localhost:8080/JsonServlet")
+    .get("http://localhost:8888/JsonServlet")
     .then(function (response) {
       console.log(response.data);
     })
@@ -27,7 +27,7 @@ jsonBtn.addEventListener("click", function () {
 
 stockInfoBtn.addEventListener("click", function () {
   axios
-    .get("http://localhost:8080/StockInfoServlet")
+    .get("http://localhost:8888/StockInfoServlet")
     .then(function (response) {
       console.log(response.data);
     })
