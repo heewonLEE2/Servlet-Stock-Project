@@ -20,11 +20,11 @@ public class TestMain {
 
 		try {
 			
-			stockService.getStockDiviList("삼성전자").stream().forEach(System.out::println);
-			StockJson.patchJson("1", false);
+			//stockService.getStockDiviList("삼성전자").stream().forEach(System.out::println);
 			
-//			 jsonService.getStockJsonList().stream().forEach(System.out::println);
+			jsonService.getStockJsonList().stream().forEach(System.out::println);
 
+			jsonService.putJson("1", true);
 			//stockInfoService.getStockInfoList("삼성전자").stream().forEach(System.out::println);
 		}catch(IOException ioe) {
 			ioe.printStackTrace();

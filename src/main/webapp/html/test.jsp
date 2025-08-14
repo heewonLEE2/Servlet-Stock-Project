@@ -13,6 +13,14 @@
 	<button id="mainBtn">servlet에 요청보내기</button>
 	<button id="jsonBtn">json서버에 요청보내기</button>
 	<button id="stockInfoBtn">stockInfoServlet 서버에 요청보내기</button>
+	<form action="/PutJsonServlet" method="post">
+		바꾸고싶은 주식 아이디<input type="text" name="name" />
+		<select name="likeState">
+			<option value="false">즐찾 추가</option>		
+			<option value="true">즐찾 해제</option>		
+		</select>
+		<input type="submit" value="요청 전송">
+	</form>
 	<%@include file="footer.jsp" %>	
 </body>
 </html>
