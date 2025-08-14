@@ -14,6 +14,7 @@ local.properties
 .loadpath
 .recommenders
 **/resources/api.properties
+.classpath
 
 # External tool builders
 .externalToolBuilders/
