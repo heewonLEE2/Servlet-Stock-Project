@@ -30,5 +30,6 @@ public class StockServiceImpl implements StockService {
 	public List<StockDividendInfoVO> getStockDiviList(String itmsNm) throws IOException {
 		return stockDao.getStockDiviList(itmsNm);
 	}
+	
 
 }

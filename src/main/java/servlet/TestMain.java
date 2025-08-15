@@ -21,7 +21,7 @@ public class TestMain {
 		try {
 			
 			stockService.getStockDiviList("삼성전자").stream().forEach(System.out::println);
-		
+			
 			//stockInfoService.getStockInfoList("삼성전자").stream().forEach(System.out::println);
 		}catch(IOException ioe) {
 			ioe.printStackTrace();

@@ -30,7 +30,7 @@ public class StockDividendInfoModel {
 
 	public StockDividendInfoModel() {
 	}
-
+	
 	public static DefaultListModel<StockDividendInfoVO> getStockDividendList() {
 		return stockDividendList;
 	}

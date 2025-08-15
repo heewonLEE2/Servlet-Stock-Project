@@ -35,7 +35,7 @@ public class StockInfoDaoImpl implements StockInfoDao {
 
 		for (JsonElement ele : itemArray) {
 			JsonObject obj = ele.getAsJsonObject();
-
+			
 			StockInfoVO stockInfoVO = new StockInfoVO(
 					obj.get("mrktTotAmt").getAsString(), // 시가총액
 					obj.get("isinCd").getAsString(), // isinCode
