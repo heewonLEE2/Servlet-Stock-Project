@@ -8,4 +8,7 @@ import model.vo.StockDividendInfoVO;
 public interface StockService {
 
 	public abstract List<StockDividendInfoVO> getStockDiviList(String itmsNm) throws IOException;
+	
+	
+	
 }
