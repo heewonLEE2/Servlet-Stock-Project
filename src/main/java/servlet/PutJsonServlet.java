@@ -41,9 +41,6 @@ public class PutJsonServlet extends HttpServlet{
 	    String jsonId = jsonObj.get("stockId").getAsString();
 	    boolean jsonBool = jsonObj.get("isLike").getAsBoolean();
 
-	    System.out.println("stockId: " + jsonId);
-	    System.out.println("isLike: " + jsonBool);
-
 	    jsonService.putJson(jsonId, jsonBool);
 		
 	}

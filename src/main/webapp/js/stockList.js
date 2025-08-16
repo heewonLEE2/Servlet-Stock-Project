@@ -56,7 +56,7 @@ function addStockIsLikeEventListeners() {
 			// 사용자 확인 대화상자 표시
 			if (userConfirmed) {
 				// 확인을 눌렀을 때 실행할 함수
-				updateStockLike(stockId, !bool); // 현재 상태의 반대로 업데이트
+				updateStockLike(stockId, bool);
 			}
 			// 취소를 누르면 아무것도 하지 않음
 		});
@@ -72,7 +72,7 @@ async function updateStockLike(stockId, newLikeStatus) {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				stockId : stockId,
+				stockId,
 				isLike: newLikeStatus,
 			}),
 		});
