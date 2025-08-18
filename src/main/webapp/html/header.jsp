@@ -8,7 +8,7 @@
 	<nav class="nav-menu">
 		<a id="stockList" href="stockList.jsp" class="active">종목 리스트</a> <a
 			id="stockInfo" href="stockInfo.jsp">종목 정보</a> <a id="stockCalendar"
-			href="#">배당락일 캘린더</a> <a id="stockDivi" href="#">배당 수익률 예상</a> <a
+			href="#">배당락일 캘린더</a> <a id="stockDivi" href="dividendCalcResult.jsp">배당 수익률 예상</a> <a
 			href="#">AI 활용주식 최신 뉴스</a>
 	</nav>
 </header>

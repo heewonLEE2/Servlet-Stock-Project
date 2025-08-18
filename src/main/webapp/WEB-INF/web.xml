@@ -45,7 +45,14 @@
 		<url-pattern>/PutJsonServlet</url-pattern>
 	</servlet-mapping>
 
-
+	<servlet>
+		<servlet-name>RetainedStockServlet</servlet-name>
+		<servlet-class>servlet.RetainedStockServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RetainedStockServlet</servlet-name>
+		<url-pattern>/RetainedStockServlet</url-pattern>
+	</servlet-mapping>
 
 </web-app>
 
