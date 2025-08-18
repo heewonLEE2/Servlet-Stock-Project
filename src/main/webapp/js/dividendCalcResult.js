@@ -75,7 +75,6 @@ function addNewCard(responseData) {
 	if (responseData.dividendForThisYear != null) { // 올해 배당 이력이 있다면
 		
 		dividendForThisYear = responseData.dividendForThisYear;
-		
 		thisYear = dividendForThisYear[0];
 		calcResult = responseData.dividendCalc;
 		

@@ -55,31 +55,39 @@ public class RetainedStockServlet extends HttpServlet {
 				resp.getWriter().write(json);
 
 			} else {
-				resp.setCharacterEncoding("utf-8");
 				
-				dataForJs.put("dividendCalc", calcResult(allInfoList, numOfHoldings));
-				dataForJs.put("dividendForThisYear", dividendForThisYear(allInfoList));
+				List<String> dividendList = dividendForThisYear(allInfoList);
+				
+				if(dividendList.size() == 1) {
+					
+					dataForJs.put("dividendCalc", calcResult(allInfoList, numOfHoldings));
+					dataForJs.put("errorMessage", "올해 배당 이력 없음");
+					
+					json = gson.toJson(dataForJs);
 
-				json = gson.toJson(dataForJs);
+					resp.setContentType("application/json; charset=utf-8");
+					resp.getWriter().write(json);
+					return;
+					
+				} else {
+					resp.setCharacterEncoding("utf-8");
+					
+					dataForJs.put("dividendCalc", calcResult(allInfoList, numOfHoldings));
+					dataForJs.put("dividendForThisYear", dividendList);
 
-				resp.setContentType("application/json; charset=utf-8");
-				resp.getWriter().write(json);
+					json = gson.toJson(dataForJs);
 
+					resp.setContentType("application/json; charset=utf-8");
+					resp.getWriter().write(json);
+					return;
+				}
+				
 			}
-			
-			// dividendForThisYear 메소드에서 데이터를 처리 할 때
-			// 사용자가 존재하는 주식회사 이름을 입력했으나
-			// 해당 주식회사의 올해 배당 이력이 없을 경우
-			// StringIndexOutOfBoundsException이 발생되기 때문에 예외처리 위임 받음
-		} catch (StringIndexOutOfBoundsException sbe) {
-			
-			dataForJs.put("errorMessage", "올해 배당 이력 없음");
-			
-			json = gson.toJson(dataForJs);
-
-			resp.setContentType("application/json; charset=utf-8");
-			resp.getWriter().write(json);
+		} catch(StringIndexOutOfBoundsException sbe) {
+			System.out.println(sbe);
 		}
+			
+			
 
 	} // doGet
 
