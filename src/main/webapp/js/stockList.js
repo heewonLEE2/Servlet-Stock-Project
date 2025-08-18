@@ -23,7 +23,7 @@ function renderTable(data) {
 	});
 	// 테이블 렌더링 후 이벤트 리스너 등록
 	addStockIsLikeEventListeners();
-}
+};
 
 // API 호출
 async function fetchStockData() {
@@ -36,7 +36,7 @@ async function fetchStockData() {
 	} catch (error) {
 		console.error('API 데이터 가져오기 실패:', error);
 	}
-}
+};
 
 // stockIsLike 클릭 이벤트 리스너 등록 함수
 function addStockIsLikeEventListeners() {
