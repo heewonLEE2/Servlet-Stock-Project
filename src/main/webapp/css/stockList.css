@@ -64,7 +64,6 @@ th {
 }
 
 th.sortable {
-	cursor: pointer;
 	user-select: none;
 	position: relative;
 }
@@ -84,19 +83,35 @@ tr:hover {
 }
 
 .stock-name {
-	cursor: pointer;
 	font-weight: 600;
 	color: #212529;
 }
 
 .category {
-	cursor: pointer;
 	font-weight: 600;
 	color: #212529;
 }
 
 .stockNum {
 	color: #212529;
+}
+
+.stock-name:hover,
+.category:hover {
+  color: #4dabf7;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.stockIsLike:hover{
+	cursor: pointer;
+}
+
+.stockIsLike {
+  transition: transform 0.3s ease-in-out; /* 부드러운 애니메이션 효과 */
+}
+.stockIsLike:hover {
+  transform: scale(1.2); /* 20% 크기 증가 */
 }
 
 @media ( max-width : 900px) {
