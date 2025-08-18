@@ -6,8 +6,10 @@
 		로고
 	</div>
 	<nav class="nav-menu">
-		<a href="#" class="active">종목 리스트</a> <a href="#">종목 정보</a> <a
-			href="#">배당락일 캘린더</a> <a href="#">배당 수익률 예상</a> <a href="#">AI 활용
-			주식 최신 뉴스</a>
+		<a href="#" class="active">종목 리스트</a>
+		<a href="#">종목 정보</a>
+		<a href="/jsp/calendar.jsp" class="active">배당락일 캘린더</a>
+		<a href="#">배당 수익률 예상</a>
+		<a href="#">AI 활용 주식 최신 뉴스</a>
 	</nav>
 </header>

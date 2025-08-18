@@ -5,8 +5,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>배당락일 캘린더</title>
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/headerFooter.css" />
   </head>
   <body>
     <%@include file="header.jsp" %>

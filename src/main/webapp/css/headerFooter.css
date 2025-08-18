@@ -50,7 +50,7 @@
 	color: #4dabf7;
 }
 
-.nav-menu a.active {
+.nav-menu:click a.active {
 	color: #4dabf7;
 	font-weight: 500;
 }
