@@ -1,4 +1,5 @@
 $(function() {
+
 	$('.btn-initialize').on('click', e => {
 		// 입력창들 초기화
 		initInput();
@@ -10,7 +11,7 @@ $(function() {
 		if (newCard.children()) {
 			newCard.empty(); // 자식 요소 전부 삭제
 		}
-	});
+	}); // 초기화 버튼 클릭 이벤트
 
 	$('.btn-calculate').on('click', async e => {
 
@@ -28,14 +29,16 @@ $(function() {
 
 		let responseData = await fetchData();
 
+		const errorMessage = responseData.errorMessage;
+
 		try {
 
-			if (responseData.errorMessage) {
+			if (errorMessage == "stockInfoNotExist") {
 				alert("해당 주식 정보가 없습니다.");
 
 				let stockNameInputBox = $('#stNm');
 
-				// alert 띄우고 다시 입력창이 렌더링 되었을 때 포커스
+				// alert 띄우고 다시 입력창이 렌더링 되었을 때 
 				if (stockNameInputBox) {
 					// 입력창 초기화 & 주식 입력 박스 focus
 					initInput();
@@ -63,11 +66,25 @@ $(function() {
 function addNewCard(responseData) {
 
 	// 계산 결과
-	const calcResult = responseData.dividendCalc;
-	// 올해 지급 현황 List	
-	const dividendForThisYear = responseData.dividendForThisYear;
+	let calcResult = null;
 
-	const thisYear = dividendForThisYear[0];
+	// 올해 배당 이력 List	
+	let dividendForThisYear = null;
+	let thisYear = null;
+
+	if (responseData.dividendForThisYear != null) { // 올해 배당 이력이 있다면
+		
+		dividendForThisYear = responseData.dividendForThisYear;
+		
+		thisYear = dividendForThisYear[0];
+		calcResult = responseData.dividendCalc;
+		
+	} else { // 올해 배당 이력이 없다면
+		
+		let date = new Date();
+		thisYear = date.getFullYear();
+		calcResult = "-";
+	}
 
 	let cardContainer = $('#newCardContainer');
 
@@ -96,16 +113,31 @@ function addNewCard(responseData) {
 
 	cardContainer.append(cardHTML);
 
+	const error = responseData.errorMessage;
+
 	// 지급 현황 보여주는 부분
 	const infoDiv = $('.situation');
 
-	if (infoDiv.length) {
-		showCurrentSituation(dividendForThisYear);
-		// 아래 방향으로 부드럽게 스크롤하여 
-		// 렌더링 된 데이터를 보여준다.
-		$('#newCard').fadeIn("slow");
-		window.scroll({ top: 600, behavior: "smooth" });
-		return;
+	if (infoDiv.length) { // 렌더링이 되면
+
+		// 배당 이력 에러가 있는지 확인
+		if (error != null &&
+			error == "올해 배당 이력 없음") {
+
+			// 배당 이력 에러가 있으면 errorMessage를 화면에 표시
+			$('.situation').append(error);
+			$('#newCard').fadeIn("slow");
+			window.scroll({ top: 600, behavior: "smooth" });
+			return;
+
+		} else {
+			showCurrentSituation(dividendForThisYear);
+			// 아래 방향으로 부드럽게 스크롤하여 이동
+			$('#newCard').fadeIn("slow");
+			window.scroll({ top: 600, behavior: "smooth" });
+			return;
+		}
+
 	}
 
 }
@@ -114,13 +146,12 @@ function addNewCard(responseData) {
 function showCurrentSituation(list) {
 	const length = list.length;
 	let div = $('.situation');
-	console.log(list);
 
 	for (let i = 1; i < length; i++) {
 		if (i != length - 1) {
 			div.append(list[i] + ', ');
 		} else {
-			div.append(list[i] + ` (총 ${length-1} 회)`);
+			div.append(list[i] + ` (총 ${length - 1} 회)`);
 		}
 	}
 
