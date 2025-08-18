@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/stockInfo.css" />
     <link rel="stylesheet" href="../css/headerFooter.css" />
     <script src="../js/stockInfo.js" defer></script>
+    <script src="../js/header.js" defer></script>
   </head>
   <body>
 	<%@ include file="header.jsp" %>

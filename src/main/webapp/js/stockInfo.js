@@ -98,6 +98,8 @@ function hideSuggestions() {
 function selectStock(stockName) {
 	const stock = apiStockData.find((s) => s.name === stockName);
 	if (stock) {
+		// 검색 input 창에 선택한 종목명 입력
+		searchInput.value = stockName;
 		fetchStockInfo(stockName);
 		hideSuggestions();
 	}
@@ -189,11 +191,18 @@ function updateStockInfoFromApi(apiData, stockName) {
 }
 
 // 초기 데이터 로드 (삼성전자)
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
+	// URL에서 name 파라미터 가져오기
+	const urlParams = new URLSearchParams(window.location.search);
+	const stockName = urlParams.get('name');
 
-	// 페이지 로딩되면 삼성전자가 보이겠금
-	fetchStockInfo("삼성전자");
-	
+	// 파라미터가 있으면 해당 주식 정보, 없으면 삼성전자 정보 로드
+	if (stockName) {
+		fetchStockInfo(stockName);
+	} else {
+		fetchStockInfo('삼성전자');
+	}
+
 	// fetch API 데이터
 	console.log("API 호출 시작...");
 	fetch("http://localhost:8888/JsonServlet")
