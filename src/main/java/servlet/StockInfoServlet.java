@@ -40,6 +40,7 @@ public class StockInfoServlet extends HttpServlet {
 			pw.append(json);
 			pw.flush();
 			pw.close();
+			
 		}else {
 			System.out.println("서버 오류 발생!");
 		}

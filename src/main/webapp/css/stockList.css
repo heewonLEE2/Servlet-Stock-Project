@@ -84,11 +84,13 @@ tr:hover {
 }
 
 .stock-name {
+	cursor: pointer;
 	font-weight: 600;
 	color: #212529;
 }
 
 .category {
+	cursor: pointer;
 	font-weight: 600;
 	color: #212529;
 }
