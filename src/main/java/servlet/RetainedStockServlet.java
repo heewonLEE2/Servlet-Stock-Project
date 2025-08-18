@@ -106,7 +106,6 @@ public class RetainedStockServlet extends HttpServlet {
 					resultList.add(ele.getCashDvdnPayDt().substring(4, 6) + "월");
 				}
 			});
-		
 		return resultList;
 
 	} // dividendDateForThisYear
@@ -139,6 +138,7 @@ public class RetainedStockServlet extends HttpServlet {
 				   
 				   // 지난 배당금들을 모두 더한다.
 				   reduce += Integer.parseInt(lastThreeMonth.get(i));
+				   System.out.println("배당금 평균: "+reduce/3);
 				   
 				   // 지난 배당금으로 구한 평균 배당금 * 사용자 보유 주식 수 = 다음 예상 배당 수익금
 				   result = String.valueOf((reduce / 3) * userHolding + " 원");

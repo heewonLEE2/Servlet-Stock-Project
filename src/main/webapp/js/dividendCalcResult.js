@@ -114,12 +114,13 @@ function addNewCard(responseData) {
 function showCurrentSituation(list) {
 	const length = list.length;
 	let div = $('.situation');
+	console.log(list);
 
 	for (let i = 1; i < length; i++) {
 		if (i != length - 1) {
 			div.append(list[i] + ', ');
 		} else {
-			div.append(list[i] + ` (총 ${length} 회)`);
+			div.append(list[i] + ` (총 ${length-1} 회)`);
 		}
 	}
 
