@@ -33,13 +33,13 @@
       <!-- 종목 기본 정보 헤더 -->
       <div class="stock-header">
         <div class="stock-name-section">
-          <div class="stock-name" id="stockName">삼성전자</div>
-          <div class="stock-code">005930</div>
+          <div class="stock-name" id="stockName">---</div>
+          <div class="stock-code">---</div>
         </div>
         <div class="current-price-section">
-          <div class="current-price" id="currentPrice">71,100원</div>
+          <div class="current-price" id="currentPrice">---</div>
           <div class="price-change change-positive" id="priceChange">
-            +100 (+0.14%)
+            ---
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@
             <div class="info-icon">💰</div>
             <div class="info-details">
               <h3>시가총액</h3>
-              <p id="marketCap">425조원</p>
+              <p id="marketCap">---</p>
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@
             <div class="info-icon">🌅</div>
             <div class="info-details">
               <h3>시가</h3>
-              <p id="openPrice">71,000원</p>
+              <p id="openPrice">---</p>
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@
             <div class="info-icon">🌆</div>
             <div class="info-details">
               <h3>종가</h3>
-              <p id="closePrice">71,100원</p>
+              <p id="closePrice">---</p>
             </div>
           </div>
         </div>
@@ -81,7 +81,7 @@
             <div class="info-icon">📈</div>
             <div class="info-details">
               <h3>고가</h3>
-              <p id="highPrice">72,400원</p>
+              <p id="highPrice">---</p>
             </div>
           </div>
         </div>
@@ -91,7 +91,7 @@
             <div class="info-icon">📉</div>
             <div class="info-details">
               <h3>저가</h3>
-              <p id="lowPrice">71,100원</p>
+              <p id="lowPrice">---</p>
             </div>
           </div>
         </div>
@@ -101,7 +101,7 @@
             <div class="info-icon">⏰</div>
             <div class="info-details">
               <h3>현재 시간</h3>
-              <p id="currentTime">15:29:59</p>
+              <p id="currentTime">---</p>
             </div>
           </div>
         </div>
@@ -109,7 +109,7 @@
 
       <!-- 마지막 업데이트 시간 -->
       <div class="last-updated">
-        마지막 업데이트: <span id="lastUpdate">2025년 8월 17일 15:29:59</span>
+        마지막 업데이트: <span id="lastUpdate">---</span>
       </div>
     </div>
 
