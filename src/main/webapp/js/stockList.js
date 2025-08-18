@@ -23,7 +23,8 @@ function renderTable(data) {
 	});
 	// 테이블 렌더링 후 이벤트 리스너 등록
 	addStockIsLikeEventListeners();
-}
+	addstockInfoEventListeners();
+};
 
 // API 호출
 async function fetchStockData() {
@@ -36,7 +37,7 @@ async function fetchStockData() {
 	} catch (error) {
 		console.error('API 데이터 가져오기 실패:', error);
 	}
-}
+};
 
 // stockIsLike 클릭 이벤트 리스너 등록 함수
 function addStockIsLikeEventListeners() {
@@ -62,6 +63,20 @@ function addStockIsLikeEventListeners() {
 		});
 	});
 }
+
+function addstockInfoEventListeners() {
+  document.querySelectorAll('.stock-name, .category').forEach((element) => {
+    element.addEventListener('click', function () {
+      // 같은 행(tr)에서 stock-name 클래스를 가진 td 찾기
+      const stockNameElement = this.parentElement.querySelector('.stock-name');
+      const stockName = stockNameElement ? stockNameElement.textContent : '';
+
+      console.log('Stock Name:', stockName);
+	  fetchStockInfo(stockName)
+    });
+  });
+}
+
 
 // 주식 좋아요 상태 업데이트 함수
 async function updateStockLike(stockId, newLikeStatus) {
@@ -89,6 +104,17 @@ async function updateStockLike(stockId, newLikeStatus) {
 	}
 }
 
+// 클릭시 파라미터에 데이터포함하여 페이지 이동
+function fetchStockInfo(stockName) {
+  const userConfirmed = confirm(`${stockName} 주식 정보 페이지로 이동하시겠습니까?`);
+  if (userConfirmed) {
+    // URL로 직접 이동하면서 쿼리 파라미터 전달
+    // encodeURIComponent로 특수문자 인코딩
+    window.location.href = `http://localhost:8888/html/stockInfo.jsp?name=${encodeURIComponent(
+      stockName
+    )}`;
+  }
+}
 
 
 
