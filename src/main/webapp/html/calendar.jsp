@@ -16,7 +16,6 @@
           <input type="text" name="companyName" placeholder="원하는 회사를 입력하세요!" />
           <button>클릭</button>
         </div>
-        <div id="month"></div>
         <div id="calendar"></div>
       </div>
     </main>
