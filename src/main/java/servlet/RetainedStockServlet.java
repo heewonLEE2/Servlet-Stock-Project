@@ -1,24 +1,31 @@
 package servlet;
 
 import java.io.IOException;
-import java.text.ParseException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import model.service.StockService;
 import model.service.impl.StockServiceImpl;
 import model.vo.StockDividendInfoVO;
 
 public class RetainedStockServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 16457585435L;
+
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -26,42 +33,63 @@ public class RetainedStockServlet extends HttpServlet {
 		
 		StockService service = new StockServiceImpl();
 		
-		String companyName = req.getParameter("companyName");
-		String numOfHoldings = req.getParameter("holding");
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		
+		String companyName = req.getParameter("stockName").trim();
+		String numOfHoldings = req.getParameter("stockCount").trim();
+		System.out.println(companyName);
+		System.out.println(numOfHoldings);
 		
 		List<StockDividendInfoVO> allInfoList = service.getStockDiviList(companyName);
 
+		Map<String, Object> dataForJs = new HashMap<String, Object>();
+		
+		String json = null;
+		
+//		사용자가 존재하지 않는 주식명을 입력했을 경우
 		if(allInfoList == null || allInfoList.isEmpty()) {
-			System.out.println("데이터 불러오는 도중 오류 발생");
+			
+			resp.setCharacterEncoding("utf-8");
+			
+			dataForJs.put("errorMessage", "notExist");
+			
+			json = gson.toJson(dataForJs);
+			
+			
+			resp.setContentType("application/json; charset=utf-8");
+			resp.getWriter().write(json);
+			
+			
 		} else {
 			resp.setCharacterEncoding("utf-8");
 			
-			String dividendCalc = findRecentInfo(allInfoList, numOfHoldings);
+			dataForJs.put("dividendCalc", calcResult(allInfoList, numOfHoldings));
+			dataForJs.put("dividendForThisYear", dividendForThisYear(allInfoList));
 			
-			req.setAttribute("dividendCalc", dividendCalc);
-			req.setAttribute("dividendForThisYear", dividendDateForThisYear(allInfoList));
+			json = gson.toJson(dataForJs);
 			
-			// attribute 유지, 포워딩
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/html/dividendCalcResult.jsp");
-			dispatcher.forward(req, resp);
+			resp.setContentType("application/json; charset=utf-8");
+			resp.getWriter().write(json);
+			
 		}
+		
 		
 	} // doGet
 	
 	/*
 	 * 가장 최근 배당금 지급 금액 => 다음 배당 수익 예상
 	 * 올해 현금 배당 날짜들 => 배당 지급 현황
-	 * Map으로 한꺼번에 담아서 view에 전달
+	 * 
 	 * */
 
 	// 올해 배당 지급 날짜 리스트 반환 메소드 반환 형식(예시) => [6월, 9월, 11월]
-	public static List<String> dividendDateForThisYear(List<StockDividendInfoVO> infoList) {
+	public static List<String> dividendForThisYear(List<StockDividendInfoVO> infoList) {
 		
-		SimpleDateFormat month = new SimpleDateFormat("M");
 		List<String> resultList = new ArrayList<String>();
 		
 		// 올해 년도
 		String thisYear = String.valueOf(LocalDate.now().getYear());
+		resultList.add(thisYear+"년");
 		
 		infoList.stream().filter(vo -> !(vo.getCashDvdnPayDt()==null) 
 				|| vo.getCashDvdnPayDt().isEmpty())
@@ -81,39 +109,45 @@ public class RetainedStockServlet extends HttpServlet {
 		
 		return resultList;
 
-	}
+	} // dividendDateForThisYear
 	
 	// 사용자 예상 수익금 계산 후 반환하는 메소드
-	public static String findRecentInfo(List<StockDividendInfoVO> infoList, String numOfHoldings) {
-		  StockDividendInfoVO recentInfo =  infoList.stream()
-				.filter(vo -> !(vo.getCashDvdnPayDt()==null) || vo.getCashDvdnPayDt().isEmpty()) 
-				.max(Comparator.comparingInt(vo -> Integer.valueOf(vo.getCashDvdnPayDt())))
-				.orElse(null);
+	public static String calcResult(List<StockDividendInfoVO> infoList, String numOfHoldings) {
+		
+		// 지난 배당금 지급일 동안의 한 주당 배당금으로 평균을 내서
+		// 이번 달 예상 배당금을 구한다.
+		List<String> lastThreeMonth = new ArrayList<String>();
+		
+		// 지난 배당금 지급일들의 주당 배당금을 담는 리스트 
+		List<StockDividendInfoVO> list = infoList.stream()
+			.filter(vo -> vo.getCashDvdnPayDt()!=null && !vo.getCashDvdnPayDt().isEmpty())
+			// 날짜 내림차순 정렬
+			.sorted((a, b) -> Integer.parseInt(b.getCashDvdnPayDt()) - Integer.parseInt(a.getCashDvdnPayDt()))
+			.limit(3) // 최신 데이터를 3개만 가져온다
+			.toList();
+		
+		for(StockDividendInfoVO vo : list) {
+			lastThreeMonth.add(vo.getStckGenrDvdnAmt());
+		}
 			
 		  String result = null;
 		  
-		   if(!(recentInfo==null)) {
-			   int userHolding = Integer.valueOf(numOfHoldings);
-			   int dividendAmt = Integer.valueOf(recentInfo.getStckGenrDvdnAmt());
-			   
-			   result = Integer.toString(userHolding * dividendAmt);
+		   if(lastThreeMonth!=null) {
+			   int userHolding = Integer.valueOf(numOfHoldings); // 사용자 보유 주식 수
+			   int reduce = 0;
+			   for(int i=0; i<3; i++) {
+				   
+				   // 지난 배당금들을 모두 더한다.
+				   reduce += Integer.parseInt(lastThreeMonth.get(i));
+				   
+				   // 지난 배당금으로 구한 평균 배당금 * 사용자 보유 주식 수 = 다음 예상 배당 수익금
+				   result = String.valueOf((reduce / 3) * userHolding + " 원");
+			   }
 		   }
-
-			return result;	
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		   
+		  return result;	
+		   
+	} // findRecentInfo
 	
 	
 	
