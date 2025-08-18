@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: sans-serif;
+	background-color: #f8f9fa;
+	color: #333;
+	height: 100vh;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+.container {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+	overflow: hidden;
+}
+
+.table-container {
+	background: white;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+}
+
+.table-wrapper {
+	flex: 1;
+	overflow-y: auto;
+	position: relative;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+thead {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	background-color: #f8f9fa;
+}
+
+th {
+	background-color: #f8f9fa;
+	padding: 16px 12px;
+	text-align: left;
+	font-weight: 600;
+	font-size: 14px;
+	color: #495057;
+	border-bottom: 1px solid #dee2e6;
+}
+
+th.sortable {
+	cursor: pointer;
+	user-select: none;
+	position: relative;
+}
+
+th.sortable:hover {
+	background-color: #e9ecef;
+}
+
+td {
+	padding: 16px 12px;
+	border-bottom: 1px solid #f1f3f4;
+	font-size: 14px;
+}
+
+tr:hover {
+	background-color: #f8f9fa;
+}
+
+.stock-name {
+	font-weight: 600;
+	color: #212529;
+}
+
+.category {
+	font-weight: 600;
+	color: #212529;
+}
+
+.stockNum {
+	color: #212529;
+}
+
+@media ( max-width : 900px) {
+	/* 화면이 작아지면 사이즈 조절*/
+	.container {
+		padding: 10px;
+	}
+	th, td {
+		padding: 12px 8px;
+		font-size: 13px;
+	}
+	.table-container {
+		overflow-x: auto;
+	}
+}
