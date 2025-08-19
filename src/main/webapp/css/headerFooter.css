@@ -63,6 +63,8 @@
 }
 
 .footer {
+	position: sticky;
+	bottom: 0;
 	height: 8vh;
 	width: 100vw;
 	display: flex;
@@ -74,3 +76,4 @@
 	border-top: 1px solid #e9ecef;
 	flex-shrink: 0;
 }
+

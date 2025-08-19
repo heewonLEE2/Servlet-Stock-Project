@@ -251,7 +251,6 @@ function getChangeClass(change) {
 }
 
 // API 호출
-
 async function fetchStockInfo(stockName) {
 	try {
 		const response = await fetch(
