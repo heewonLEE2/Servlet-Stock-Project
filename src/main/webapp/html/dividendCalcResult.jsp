@@ -43,9 +43,10 @@
 			</form>
 
 		</div>
+		<!-- 사용자 검색 결과 컨테이너 -->
+		<div id="newCardContainer"></div>
 	</div>
-	<!-- 사용자 검색 결과 컨테이너 -->
-	<div id="newCardContainer"></div>
+
 
 	<%@ include file="footer.jsp"%>
 
