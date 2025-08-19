@@ -26,7 +26,6 @@ $(function() {
 		const calcBtn = $('.btn-calculate');
 
 		calcBtn.prop("disabled", true);
-
 		let responseData = await fetchData();
 
 		const errorMessage = responseData.errorMessage;
