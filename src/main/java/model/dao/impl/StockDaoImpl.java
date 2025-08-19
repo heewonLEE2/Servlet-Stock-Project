@@ -22,7 +22,6 @@ public class StockDaoImpl implements StockDao{
 	public StockDaoImpl() {
 	}
 
-	@Override
 	public List<StockDividendInfoVO> getStockDiviList(String itmsNm) throws IOException{
 		String isinCd = StockInfoAPI.getIsinCd(itmsNm);
 
