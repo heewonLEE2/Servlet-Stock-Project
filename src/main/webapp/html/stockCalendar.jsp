@@ -8,6 +8,9 @@
     <title>배당락일 캘린더</title>
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/headerFooter.css" />
+    <link rel="stylesheet" href="../css/stockCalendar.css" />
+    <script src="../js/stockCalendar.js" defer></script>
+    <script src="../js/header.js" defer></script>
   </head>
   <body>
     <%@include file="header.jsp" %>
@@ -17,10 +20,12 @@
           <input type="text" name="companyName" placeholder="원하는 회사를 입력하세요!" />
           <button>클릭</button>
         </div>
-        <div id="calendar"></div>
+        <div id="resultContainer">
+	        <div id="calendar"></div>
+	        <div id="dividendList"></div>
+        </div>
       </div>
     </main>
-    <script src="../js/calendar.js" defer></script>
     <%@include file="footer.jsp" %>
   </body>
 </html>
