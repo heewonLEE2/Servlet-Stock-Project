@@ -28,9 +28,14 @@
 			</div>
 			<form id="stockForm">
 				<div class="form-row">
+				<div class="search-container">
 					<div class="form-field">
 						<label>종목명</label> <input type="text" id="stNm"
 							placeholder="예: 삼성전자">
+						<div class="search-suggestions" id="searchSuggestions">
+							<!-- 검색 결과가 여기에 표시됩니다 -->
+						</div>
+					</div>
 					</div>
 					<div class="form-field">
 						<label>보유 수량</label> <input type="number" id="stCt"
