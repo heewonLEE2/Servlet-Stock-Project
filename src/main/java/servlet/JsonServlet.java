@@ -20,7 +20,6 @@ public class JsonServlet extends HttpServlet{
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
          throws ServletException, IOException {
-      System.out.println("json Servlet 요청 들어옴!");
       
       JsonService jsonService = new JsonServiceImpl();
       
@@ -30,7 +29,6 @@ public class JsonServlet extends HttpServlet{
       if(jsonList.isEmpty()) {
          System.out.println("json 데이터 불러오기 오류!! ");
       }else {
-         System.out.println("json Servlet 요청응답 성공");
          String json = ApiConstant.gson.toJson(jsonList);
          
          resp.setContentType("application/json; charset=utf-8");
