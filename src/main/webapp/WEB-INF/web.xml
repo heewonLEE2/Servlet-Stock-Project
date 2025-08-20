@@ -53,6 +53,15 @@
 		<servlet-name>RetainedStockServlet</servlet-name>
 		<url-pattern>/RetainedStockServlet</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>StockCalendarServlet</servlet-name>
+		<servlet-class>servlet.StockCalendarServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StockCalendarServlet</servlet-name>
+		<url-pattern>/stockCalendarServlet</url-pattern>
+	</servlet-mapping>
 
 </web-app>
 

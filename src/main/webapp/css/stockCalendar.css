@@ -2,3 +2,163 @@
 
 /* stockCalendar.css */
 
+/* 전체 랩 */
+#wrap {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* 검색창 컨테이너 */
+#searchContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 20px auto;
+}
+
+/* 돋보기 아이콘 */
+#search {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+}
+
+/* 검색 input */
+#search-input {
+  width: 100%;
+  padding: 10px 60px; 
+  height: 50px;
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+/* 결과 컨테이너 */
+#resultContainer {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  gap: 20px;
+}
+
+/* 캘린더와 리스트 */
+#calendar, #dividendList {
+  flex: 1 1 300px;
+  min-height: 400px;
+  max-width: 700px;
+  box-sizing: border-box;
+}
+
+/* 캘린더 table */
+table {
+  min-width: 500px;
+  min-height: 700px;
+}
+
+/* 캘린더 table td */
+table td {
+  padding: 0;
+  text-align: center;
+}
+
+/* div 리스트 스타일 */
+#dividendList {
+  padding: 10px;
+  overflow-y: auto;
+
+  max-width: 400px;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 20px 25px;
+}
+
+/* 반응형 미디어 쿼리 */
+@media (max-width: 768px) {
+  #search-input {
+    font-size: 0.9rem;
+    height: 40px;
+  }
+
+  #calendar, #dividendList {
+    min-height: 300px;
+  }
+}
+
+/* 캘린더, 날짜 감싸는 컨테이너 */
+#calendar-container {
+  margin: 10px;
+}
+
+/* 캘린더안의 날짜와 화살표 */
+#calendar-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+}
+
+/* 캘린더 제목 화살표 */
+.arrow img{
+  width: 25px;
+  height: 25px;
+}
+
+/* 캘린더 제목 날짜 */
+.date p {
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+/* 오른쪽 배당락일 리스트 제목 */
+#dividendList-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  border-bottom: 1px solid #f5f5f5;
+}
+
+/* 배당락일리스트 제목의 캘린더 아이콘 */
+#dividendList-title > img {
+  width: 25px;
+  height: 25px;
+}
+
+/* 배당락일리스트 제목의 캘린더 제목 */
+#dividendList-title > p {
+  font-size: 20px;
+}
+
+/* 년도 select */
+#yearSelectContainer > select {
+  width: 280px;
+  height: 45px;
+
+  border-radius: 8px;
+  border: 1px solid #D9D9D9;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
+
+  padding: 0 10px;
+}
+
+/* 배당락일 결과 리스트 컨테이너 */
+#dividendList-result-container {
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
+  
+  max-width: 300px;
+  min-height: 550px;
+
+  margin-top: 10px;
+  padding: 5px 20px;
+}

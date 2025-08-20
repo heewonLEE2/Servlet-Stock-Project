@@ -7,10 +7,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 75vh;
+  min-height: 75vh;
 }
 
 #mainDiv {
-  height: 75vh;
+  min-height: 75vh;
   width: 70vw;
 }
