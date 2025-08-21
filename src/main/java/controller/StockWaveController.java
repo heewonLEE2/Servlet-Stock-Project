@@ -30,7 +30,6 @@ public class StockWaveController extends HttpServlet{
 
 			command = requestURI.substring(1).substring(0, req.getRequestURI().length() - 11);
 		}
-		System.out.println(requestURI);
 		System.out.println(command);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/html/stockList.jsp");

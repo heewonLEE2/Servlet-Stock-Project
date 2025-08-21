@@ -19,7 +19,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 // 주식 제목, 시가, 종가 등을 호출하는 json
-public class StockJson {
+public class StockJsonAPI {
 
 	
 	public static DefaultListModel<StockJsonVO> getJson() {

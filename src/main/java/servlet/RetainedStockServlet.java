@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import model.service.StockService;
+import model.service.StockDiviService;
 import model.service.impl.StockServiceImpl;
 import model.vo.StockDividendInfoVO;
 
@@ -28,7 +28,7 @@ public class RetainedStockServlet extends HttpServlet {
 
 		req.setCharacterEncoding("utf-8");
 
-		StockService service = new StockServiceImpl();
+		StockDiviService service = new StockServiceImpl();
 
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 

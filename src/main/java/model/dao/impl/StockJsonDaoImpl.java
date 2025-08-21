@@ -10,7 +10,7 @@ import com.google.gson.reflect.TypeToken;
 
 import model.StockJsonModel;
 import model.apiUtil.constant.ApiConstant;
-import model.dao.JsonDao;
+import model.dao.StockJsonDao;
 import model.vo.StockDividendInfoVO;
 import model.vo.StockJsonVO;
 import okhttp3.MediaType;
@@ -18,9 +18,9 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class JsonDaoImpl implements JsonDao {
+public class StockJsonDaoImpl implements StockJsonDao {
 
-	public JsonDaoImpl() {
+	public StockJsonDaoImpl() {
 	}
 
 	@Override

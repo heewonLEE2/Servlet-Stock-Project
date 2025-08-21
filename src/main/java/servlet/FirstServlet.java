@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.apiUtil.constant.ApiConstant;
-import model.service.StockService;
+import model.service.StockDiviService;
 import model.service.impl.StockServiceImpl;
 import model.vo.StockDividendInfoVO;
 
@@ -22,7 +22,7 @@ public class FirstServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		StockService stockService = new StockServiceImpl();
+		StockDiviService stockService = new StockServiceImpl();
 		
 		List<StockDividendInfoVO> list = stockService.getStockDiviList("삼성전자");
 		

@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import model.service.JsonService;
+import model.service.StockJsonService;
 import model.service.StockInfoService;
-import model.service.StockService;
-import model.service.impl.JsonServiceImpl;
+import model.service.StockDiviService;
+import model.service.impl.StockJsonServiceImpl;
 import model.service.impl.StockInfoServiceImpl;
 import model.service.impl.StockServiceImpl;
 import model.vo.StockJsonVO;
@@ -16,8 +16,8 @@ public class TestMain {
 	
 	public static void main(String[] args) {
 
-		StockService stockService = new StockServiceImpl();
-		JsonService jsonService = new JsonServiceImpl();
+		StockDiviService stockService = new StockServiceImpl();
+		StockJsonService jsonService = new StockJsonServiceImpl();
 		StockInfoService stockInfoService = new StockInfoServiceImpl();
 
 		try {

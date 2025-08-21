@@ -3,18 +3,18 @@ package model.service.impl;
 import java.io.IOException;
 import java.util.List;
 
-import model.dao.JsonDao;
-import model.dao.impl.JsonDaoImpl;
-import model.service.JsonService;
+import model.dao.StockJsonDao;
+import model.dao.impl.StockJsonDaoImpl;
+import model.service.StockJsonService;
 import model.vo.StockJsonVO;
 
-public class JsonServiceImpl implements JsonService{
+public class StockJsonServiceImpl implements StockJsonService{
 
 	
-	JsonDao jsonDao;
+	StockJsonDao jsonDao;
 	
-	public JsonServiceImpl() {
-		jsonDao = new JsonDaoImpl();
+	public StockJsonServiceImpl() {
+		jsonDao = new StockJsonDaoImpl();
 	}
 	
 	@Override

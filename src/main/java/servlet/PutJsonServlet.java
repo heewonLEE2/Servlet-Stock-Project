@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
-import model.service.JsonService;
-import model.service.impl.JsonServiceImpl;
+import model.service.StockJsonService;
+import model.service.impl.StockJsonServiceImpl;
 
 public class PutJsonServlet extends HttpServlet{
 
@@ -20,7 +20,7 @@ public class PutJsonServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		JsonService jsonService = new JsonServiceImpl();
+		StockJsonService jsonService = new StockJsonServiceImpl();
 		
 	    // 요청 body를 문자열로 읽기 (body 담아서 보내는 요청은 getparameter 로 읽기 불가능
 	    StringBuilder sb = new StringBuilder();
