@@ -67,7 +67,7 @@ const apiStockData = [];
 // 초기 데이터 로드 (삼성전자)
 document.addEventListener('DOMContentLoaded', function() {
 	
-	fetch("http://localhost:8888/JsonServlet")
+	fetch("http://localhost:8888/stockList.stockwave")
 		.then((response) => {
 			// console.log("API 응답 받음:", response.status, response.ok);
 			if (response.ok) {
@@ -255,7 +255,7 @@ async function fetchData() {
 		const stCt = $('#stCt').val();
 
 		const resp = await fetch(
-			`http://localhost:8888/RetainedStockServlet?stockName=${stNm}&stockCount=${stCt}`
+			`http://localhost:8888/stockRetained.stockwave?stockName=${stNm}&stockCount=${stCt}`
 		);
 
 		const data = await resp.json();

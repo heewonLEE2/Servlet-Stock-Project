@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.apiUtil.constant.ApiConstant;
-import model.service.JsonService;
-import model.service.impl.JsonServiceImpl;
+import model.service.StockJsonService;
+import model.service.impl.StockJsonServiceImpl;
 import model.vo.StockJsonVO;
 
 public class JsonServlet extends HttpServlet{
@@ -21,7 +21,7 @@ public class JsonServlet extends HttpServlet{
    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
          throws ServletException, IOException {
       
-      JsonService jsonService = new JsonServiceImpl();
+      StockJsonService jsonService = new StockJsonServiceImpl();
       
       List<StockJsonVO> jsonList = jsonService.getStockJsonList();
       

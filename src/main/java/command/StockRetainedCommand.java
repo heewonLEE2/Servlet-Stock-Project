@@ -1,14 +1,11 @@
-package servlet;
+package command;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,23 +16,20 @@ import model.service.StockDiviService;
 import model.service.impl.StockDiviServiceImpl;
 import model.vo.StockDividendInfoVO;
 
-public class RetainedStockServlet extends HttpServlet {
+public class StockRetainedCommand extends AbstractStockDivi{
 
-	private static final long serialVersionUID = 16457585435L;
-
+	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void process(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 
 		req.setCharacterEncoding("utf-8");
-
-		StockDiviService service = new StockDiviServiceImpl();
 
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
 		String companyName = req.getParameter("stockName").trim();
 		String numOfHoldings = req.getParameter("stockCount").trim();
 
-		List<StockDividendInfoVO> allInfoList = service.getStockDiviList(companyName);
+		List<StockDividendInfoVO> allInfoList = stockDiviService.getStockDiviList(companyName);
 
 		Map<String, Object> dataForJs = new HashMap<String, Object>();
 
@@ -164,5 +158,5 @@ public class RetainedStockServlet extends HttpServlet {
 		return result;
 
 	} // findRecentInfo
-
-} // class
+		
+}
