@@ -21,6 +21,11 @@
 		</select>
 		<input type="submit" value="요청 전송">
 	</form>
+	<form action="/RetainedStockServlet" method="get">
+		<input type="text" id="cdNm" name="companyName" placeholder="주식 이름을 입력하세요">
+		<input type="text" id="hold" name="holding" placeholder="보유 주식 수 입력">
+		<input type="submit" value="검색">
+	</form>
 	<%@include file="footer.jsp" %>	
 </body>
 </html>

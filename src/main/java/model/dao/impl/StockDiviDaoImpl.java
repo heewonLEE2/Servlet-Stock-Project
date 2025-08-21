@@ -11,18 +11,17 @@ import com.google.gson.JsonObject;
 
 import model.apiUtil.StockInfoAPI;
 import model.apiUtil.constant.ApiConstant;
-import model.dao.StockDao;
+import model.dao.StockDiviDao;
 import model.vo.StockDividendInfoVO;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class StockDaoImpl implements StockDao{
+public class StockDiviDaoImpl implements StockDiviDao{
 	
 	
-	public StockDaoImpl() {
+	public StockDiviDaoImpl() {
 	}
 
-	@Override
 	public List<StockDividendInfoVO> getStockDiviList(String itmsNm) throws IOException{
 		String isinCd = StockInfoAPI.getIsinCd(itmsNm);
 

@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	// fetch API 데이터
 	console.log("API 호출 시작...");
-	fetch("http://localhost:8888/JsonServlet")
+	fetch("http://localhost:8888/stockList.stockwave")
 		.then((response) => {
 			// console.log("API 응답 받음:", response.status, response.ok);
 			if (response.ok) {
@@ -251,11 +251,10 @@ function getChangeClass(change) {
 }
 
 // API 호출
-
 async function fetchStockInfo(stockName) {
 	try {
 		const response = await fetch(
-			`http://localhost:8888/StockInfoServlet?name=${stockName}`
+			`http://localhost:8888/stockInfo.stockwave?name=${stockName}`
 		);
 		const data = await response.json();
 		// console.log(data)

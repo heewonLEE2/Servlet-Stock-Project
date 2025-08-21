@@ -38,6 +38,7 @@ public class ApiConstant {
 
             STOCKINFO_API = "https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey="
                     + apiKey + "&numOfRows=1&pageNo=1&resultType=json&itmsNm=";
+            
         } else {
             // API 키가 null이면 에러 메시지 출력
             System.out.println("apiKey null");

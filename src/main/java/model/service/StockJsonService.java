@@ -6,7 +6,7 @@ import java.util.List;
 import model.vo.StockDividendInfoVO;
 import model.vo.StockJsonVO;
 
-public interface JsonService {
+public interface StockJsonService {
 
 	
 	public abstract List<StockJsonVO> getStockJsonList() throws IOException;
