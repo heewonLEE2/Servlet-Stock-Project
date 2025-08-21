@@ -18,11 +18,11 @@ import model.vo.StockDividendInfoVO;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class StockServiceImpl implements StockDiviService {
+public class StockDiviServiceImpl implements StockDiviService {
 
 	StockDiviDao stockDao;
 
-	public StockServiceImpl() {
+	public StockDiviServiceImpl() {
 		stockDao = new StockDiviDaoImpl();
 	}
 

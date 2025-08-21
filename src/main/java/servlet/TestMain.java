@@ -9,14 +9,14 @@ import model.service.StockInfoService;
 import model.service.StockDiviService;
 import model.service.impl.StockJsonServiceImpl;
 import model.service.impl.StockInfoServiceImpl;
-import model.service.impl.StockServiceImpl;
+import model.service.impl.StockDiviServiceImpl;
 import model.vo.StockJsonVO;
 
 public class TestMain {
 	
 	public static void main(String[] args) {
 
-		StockDiviService stockService = new StockServiceImpl();
+		StockDiviService stockService = new StockDiviServiceImpl();
 		StockJsonService jsonService = new StockJsonServiceImpl();
 		StockInfoService stockInfoService = new StockInfoServiceImpl();
 

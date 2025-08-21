@@ -1,5 +1,14 @@
 package command;
 
-public abstract class AbstractStockJson {
+import model.service.StockJsonService;
+import model.service.impl.StockJsonServiceImpl;
 
+public abstract class AbstractStockJson implements StockWaveCommand{
+
+	public StockJsonService stockJsonService;
+	
+	public AbstractStockJson() {
+		stockJsonService = new StockJsonServiceImpl();
+	}
+	
 }
