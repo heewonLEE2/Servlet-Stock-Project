@@ -1,8 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import model.service.StockJsonService;
 import model.service.StockInfoService;
@@ -10,7 +8,6 @@ import model.service.StockDiviService;
 import model.service.impl.StockJsonServiceImpl;
 import model.service.impl.StockInfoServiceImpl;
 import model.service.impl.StockDiviServiceImpl;
-import model.vo.StockJsonVO;
 
 public class TestMain {
 	
