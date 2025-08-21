@@ -19,51 +19,6 @@
 	</servlet-mapping>
 
 
-	<servlet>
-		<servlet-name>FirstServlet</servlet-name>
-		<servlet-class>servlet.FirstServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>FirstServlet</servlet-name>
-		<url-pattern>/FirstServlet</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>JsonServlet</servlet-name>
-		<servlet-class>servlet.JsonServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>JsonServlet</servlet-name>
-		<url-pattern>/JsonServlet</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>StockInfoServlet</servlet-name>
-		<servlet-class>servlet.StockInfoServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>StockInfoServlet</servlet-name>
-		<url-pattern>/StockInfoServlet</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>PutJsonServlet</servlet-name>
-		<servlet-class>servlet.PutJsonServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>PutJsonServlet</servlet-name>
-		<url-pattern>/PutJsonServlet</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>RetainedStockServlet</servlet-name>
-		<servlet-class>servlet.RetainedStockServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>RetainedStockServlet</servlet-name>
-		<url-pattern>/RetainedStockServlet</url-pattern>
-	</servlet-mapping>
-
 </web-app>
 
 
