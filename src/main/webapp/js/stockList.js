@@ -29,7 +29,7 @@ function renderTable(data) {
 // API 호출
 async function fetchStockData() {
 	try {
-		const response = await fetch('http://localhost:8888/JsonServlet');
+		const response = await fetch('http://localhost:8888/stockList.stockwave');
 		const data = await response.json();
 		//console.log(data); // 데이터 확인
 		// 받은 데이터를 렌더링 함수 data 파라미터에 보내기
@@ -81,7 +81,7 @@ function addstockInfoEventListeners() {
 // 주식 좋아요 상태 업데이트 함수
 async function updateStockLike(stockId, newLikeStatus) {
 	try {
-		const response = await fetch(`http://localhost:8888/PutJsonServlet`, {
+		const response = await fetch(`http://localhost:8888/stockLikePatch.stockwave`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

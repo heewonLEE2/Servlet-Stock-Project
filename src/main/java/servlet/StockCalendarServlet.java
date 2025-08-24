@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import model.service.StockService;
-import model.service.impl.StockServiceImpl;
+import model.service.StockDiviService;
+import model.service.impl.StockDiviServiceImpl;
 import model.vo.StockDividendInfoVO;
 
 public class StockCalendarServlet extends HttpServlet {
@@ -21,7 +21,7 @@ public class StockCalendarServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		StockService stockService = new StockServiceImpl();
+		StockDiviService stockService = new StockDiviServiceImpl();
 		
 		String itmsName = req.getParameter("itmsName");
 		

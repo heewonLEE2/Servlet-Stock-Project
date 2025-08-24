@@ -5,7 +5,7 @@ import java.util.List;
 
 import model.vo.StockJsonVO;
 
-public interface JsonDao {
+public interface StockJsonDao {
 
 	
 	public abstract List<StockJsonVO> getStockJsonList() throws IOException;
