@@ -26,11 +26,13 @@ public class StockCalendarServlet extends HttpServlet {
 		String itmsName = req.getParameter("itmsName");
 		
 		List<StockDividendInfoVO> stockList 
-			= stockService.getStockDiviList("AK홀딩스");
+			= stockService.getStockDiviList(itmsName);
 		
 		List<String> stockDividendList = new ArrayList<String>();
 		for(StockDividendInfoVO stock : stockList) {
-			stockDividendList.add(stock.getDvdnBasDt());
+			stockDividendList.add(
+				String.valueOf(Integer.parseInt(stock.getDvdnBasDt()) - 2)
+			);
 		}
 		
 		String json = null;
