@@ -3,7 +3,7 @@
  */
 
 function drawCalendar(year, month, highlightDays = []) {
-	
+
 	const calendar = document.getElementById("calendar");
 	calendar.innerHTML = "";
 	
@@ -81,6 +81,11 @@ function drawCalendar(year, month, highlightDays = []) {
 			td.innerHTML = dNum;
 			
 	      }
+	      
+	      if(dNum === highlightDays){
+				td.style.backgroundColor = "yellow";
+		  }
+		
 	      //일 증가
 	      dNum++;
 	    }
@@ -92,5 +97,5 @@ function drawCalendar(year, month, highlightDays = []) {
 }
 
 // 페이지 로드 시 기본 달력
-//const today = new Date();
-//drawCalendar(today.getFullYear(), today.getMonth(), [today.getDate()]);
+const today = new Date();
+drawCalendar(today.getFullYear(), today.getMonth(), [today.getDate()]);
