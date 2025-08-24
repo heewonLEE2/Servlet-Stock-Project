@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/stockCalendar.css" />
     <script src="../js/stockCalendar.js" defer></script>
     <script src="../js/header.js" defer></script>
-    <script src="../js/stockDividendDate.js"></script>
+    <script src="../js/stockDividendDate.js" defer></script>
   </head>
   <body>
     <%@include file="header.jsp" %>
@@ -20,7 +20,7 @@
         <div id="wrap">
           <div id="searchContainer">
             <img id="search" src="/css/assets/search.png" alt="search">
-            <input id="search-input" type="text" name="companyName" placeholder="원하는 회사를 입력하세요! ex)삼성전자" />
+            <input id="search-input" type="text" name="itmsName" placeholder="원하는 회사를 입력하세요! ex)삼성전자" />
           </div>
           <div id="resultContainer">
             <div id="calendar-container">
@@ -28,9 +28,7 @@
                 <div class="arrow">
                   <img src="/css/assets/left-arrow.png" alt="arrow">
                 </div>
-                <div class="date">
-                  <p>2025년 8월</p>
-                </div>
+                <div class="date"></div>
                 <div class="arrow">
                   <img src="/css/assets/right-arrow.png" alt="arrow">
                 </div>
@@ -39,10 +37,7 @@
             </div>
             <div id="dividendList">
               <div id="yearSelectContainer">
-                <select name="yearSelect" id="yearSelect">
-                  <option value="2025">2025</option>
-                  <option value="2024">2024</option>
-                </select>
+                <select name="yearSelect" id="yearSelect"></select>
               </div>
               <div id="dividendList-result-container">
                 <div id="dividendList-title">
