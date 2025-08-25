@@ -98,4 +98,21 @@ function drawCalendar(year, month, highlightDays = []) {
 
 // 페이지 로드 시 기본 달력
 const today = new Date();
+const p = document.createElement("p");
+p.innterHTML
+	= `${today.getFullYear()}년 ${today.getMonth()+1}월`;
+document.querySelector(".date").appendChild(p);
 drawCalendar(today.getFullYear(), today.getMonth(), [today.getDate()]);
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -12,6 +12,8 @@
     <script src="../js/stockCalendar.js" defer></script>
     <script src="../js/header.js" defer></script>
     <script src="../js/stockDividendDate.js" defer></script>
+    <script src="../js/stockCalendarList.js" defer></script>
+    <script src="../js/stockYearFilter.js" defer></script>
   </head>
   <body>
     <%@include file="header.jsp" %>

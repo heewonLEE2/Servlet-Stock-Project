@@ -29,24 +29,13 @@ const getStockDivied = async () => {
 		  ${data[0].substring(4, 6)}월`;
 		document.querySelector(".date").append(p);
 		
-		const ul = document.createElement("ul");
-		const li = document.createElement("li");
+		// year과 년도가 같은 배당락일 모두 리스트에 표시
+		// 리스트 선택 시 해당 날짜로 캘린더 이동
+		// 년도 필터링 연도 선택 시 해당 년도의 배당락일 리스트에 표시
 		
-		li.innerHTML = `${year}-${month+1}-${days}`;
-		ul.appendChild(li);
-		document.querySelector("#dividendList-list").append(ul);
+		getDiviList(year, stockDiviedListSorted);
 		
-		let stockYearAllList = [];
-		for(let date of stockDiviedListSorted){
-		  stockYearAllList.push(date.substring(0, 4));
-		}
-		
-		let stockYearList = [...new Set(stockYearAllList)];
-		for(let year of stockYearList){
-		  const option = document.createElement("option");
-		  option.innerHTML = `${year}`;
-		  document.querySelector("#yearSelect").append(option);
-		}
+		filterStockYear(stockDiviedListSorted);
 	}
 	
   } catch(error) {
