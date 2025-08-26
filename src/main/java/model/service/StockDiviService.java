@@ -9,6 +9,4 @@ public interface StockDiviService {
 
 	public abstract List<StockDividendInfoVO> getStockDiviList(String itmsNm) throws IOException;
 	
-	
-	
 }
