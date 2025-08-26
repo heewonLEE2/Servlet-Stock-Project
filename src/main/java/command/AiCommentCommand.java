@@ -8,12 +8,20 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import model.apiUtil.constant.ApiConstant;
+import model.service.AiCommentService;
+import model.service.impl.AiCommentServiceImpl;
 
 public class AiCommentCommand implements StockWaveMainCommand{
 
+	private AiCommentService aiCommentService;
+	
+	public AiCommentCommand() {
+		this.aiCommentService = new AiCommentServiceImpl();
+	}
 	
 	@Override
 	public void process(HttpServletRequest req, HttpServletResponse resp) throws Exception {
@@ -31,12 +39,13 @@ public class AiCommentCommand implements StockWaveMainCommand{
 		}
 		String requestBody = sb.toString();
 		
-		System.out.println("받은 JSON: " +
-		ApiConstant.gson.fromJson(requestBody, JsonObject.class).get("question"));
+		// 받아온 데이터를 String으로 변환
+		String jsonString = ApiConstant.gson.fromJson(requestBody, JsonObject.class).get("question").toString();
+		System.out.println("받은 JSON: "+ jsonString);
 		
 		// 객체 (자바 bean DTO 를 만들고 싶지 않아서) 맵을 만들어서 JSON로 변환해 데이터를 보냄
 		Map<String, String> map = new HashMap<>();
-		map.put("content", "서버에서 보내는 응답입니다.");
+		map.put("content", aiCommentService.aiCommentProc(jsonString));
 
 		String json = ApiConstant.gson.toJson(map);
 		
@@ -48,3 +57,6 @@ public class AiCommentCommand implements StockWaveMainCommand{
 		
 	}
 }
+
+
+

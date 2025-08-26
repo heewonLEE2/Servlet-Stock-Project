@@ -62,7 +62,7 @@ function addMessage(content, isUser = false) {
     minute: "2-digit",
   });
 
-  if(!isUser) console.log("addMessage 에서의 content : ", content);
+  // if(!isUser) console.log("addMessage 에서의 content : ", content);
   messageDiv.innerHTML = `
                 ${content}
                 <div class="message-time">${timeString}</div>
@@ -97,7 +97,7 @@ async function getAIResponse(question) {
     throw new Error("AI 응답을 가져오는 데 실패했습니다.");
   }
   const data = await response.json()
-  // console.log(data.content);
+  console.log(data.content);
   return data.content;
 }
 
@@ -120,7 +120,7 @@ function sendMessage() {
   setTimeout(async () => {
     hideTyping();
     const aiResponse = await getAIResponse(message); // 응답 기다림
-    console.log("응답 시뮬레이션 : ", aiResponse);
+    // console.log("응답 시뮬레이션 : ", aiResponse);
     
     addMessage(aiResponse);
     sendButton.disabled = false;

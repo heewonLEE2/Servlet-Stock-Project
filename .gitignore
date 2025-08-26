@@ -16,6 +16,10 @@ local.properties
 **/resources/api.properties
 **/.classpath
 
+#resources
+src/main/resources/api.properties
+
+
 # External tool builders
 .externalToolBuilders/
 
