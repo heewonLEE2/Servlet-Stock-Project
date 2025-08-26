@@ -11,7 +11,6 @@ const getStockDivied = async () => {
     const data = await response.json();
     
     document.querySelector(".date").innerHTML = "";
-    const p = document.createElement("p");
 	
 	if(data&&data.length>0){
 		p.innerHTML = "";
@@ -24,18 +23,14 @@ const getStockDivied = async () => {
         
         drawCalendar(year, month, days);
 		
-		p.innerHTML = `
-		  ${data[0].substring(0, 4)}년 
-		  ${data[0].substring(4, 6)}월`;
-		document.querySelector(".date").append(p);
+		createCalendarTitle(year, month+1);
 		
 		// year과 년도가 같은 배당락일 모두 리스트에 표시
-		// 리스트 선택 시 해당 날짜로 캘린더 이동
-		// 년도 필터링 연도 선택 시 해당 년도의 배당락일 리스트에 표시
-		
 		getDiviList(year, stockDiviedListSorted);
-		
+		// 년도 필터링 연도 선택 시 해당 년도의 배당락일 리스트에 표시
 		filterStockYear(stockDiviedListSorted);
+		// 리스트 선택 시 해당 날짜로 캘린더 이동
+		stockMoveCalendar();
 	}
 	
   } catch(error) {

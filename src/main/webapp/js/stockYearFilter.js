@@ -20,8 +20,7 @@ function filterStockYear(stockDiviedListSorted){
 	}
 	
 	select.addEventListener("change", (e) => {
-	  		console.log(e.target.value); 
-			getDiviList(e.target.value, stockDiviedListSorted);
+		getDiviList(e.target.value, stockDiviedListSorted);
 	});
 }
 

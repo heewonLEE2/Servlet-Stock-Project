@@ -1,8 +1,10 @@
 /**
- * calendar.js
+ * 캘린더 날짜 로딩하는 js
  */
 
 function drawCalendar(year, month, highlightDays = []) {
+	console.log("year", year);
+	console.log("month", month);
 
 	const calendar = document.getElementById("calendar");
 	calendar.innerHTML = "";
