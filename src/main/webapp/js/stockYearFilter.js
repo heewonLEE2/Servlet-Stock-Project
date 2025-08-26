@@ -3,28 +3,27 @@
  */
 
 function filterStockYear(stockDiviedListSorted){
+	const select = document.getElementById("yearSelect");
+	select.innerHTML = "";
 	
 	let stockYearAllList = [];
 	for(let date of stockDiviedListSorted){
-	  stockYearAllList.push(date.substring(0, 4));
+  		stockYearAllList.push(date.substring(0, 4));
 	}
 		
 	let stockYearList = [...new Set(stockYearAllList)];
 	for(let year of stockYearList){
-	  const option = document.createElement("option");
-	  option.className = "selectYear";
-	  option.innerHTML = `${year}`;
-	  document.querySelector("#yearSelect").append(option);
+	  	const option = document.createElement("option");
+	  	option.className = "selectYear";
+	  	option.innerHTML = `${year}`;
+	  	document.querySelector("#yearSelect").append(option);
 	}
 	
-	const options = document.querySelectorAll(".selectYear");
-	options.forEach(y => {
-		y.addEventListener("click", () => {
-			console.log(y);
-			
-			getStockDivied(y.value, stockDiviedListSorted);
-		})
-	})
-	
+	select.addEventListener("change", (e) => {
+	  		console.log(e.target.value); 
+			getDiviList(e.target.value, stockDiviedListSorted);
+	});
 }
+
+
  
