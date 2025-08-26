@@ -10,10 +10,8 @@
 <title>배당 수익금 예상</title>
 <link rel="stylesheet" type="text/css"
 	href="../css/dividendCalcResult.css">
-<link rel="stylesheet" href="../css/headerFooter.css">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
 <script type="text/javascript" src="../js/dividendCalcResult.js" defer></script>
-<script src="../js/header.js" defer></script>
 </head>
 <body>
 

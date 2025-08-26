@@ -7,9 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>로고 - 주식 정보</title>
     <link rel="stylesheet" href="../css/stockList.css" />
-    <link rel="stylesheet" href="../css/headerFooter.css">
     <script src="../js/stockList.js" defer></script>
-    <script src="../js/header.js" defer></script>
   </head>
   <body>
   	<%@ include file="header.jsp" %>
