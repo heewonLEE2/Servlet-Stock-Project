@@ -40,7 +40,8 @@ public class StockInfoAPI {
 				response.body().close();
 			}
 		}
-
+		ApiConstant.client.dispatcher().executorService().shutdown();
+		ApiConstant.client.connectionPool().evictAll();
 		return isinCd;
 
 	} // getIsinCd
@@ -67,7 +68,7 @@ public class StockInfoAPI {
 						obj.get("hipr").getAsString(), // 고가
 						obj.get("lopr").getAsString() // 저가
 				);
-
+				
 				StockInfoModel.getStockInfoList().addElement(stockInfoVO);
 			}
 
@@ -75,6 +76,8 @@ public class StockInfoAPI {
 			e.printStackTrace();
 		} finally {
 			if (response.body() != null && response != null) {
+				ApiConstant.client.dispatcher().executorService().shutdown();
+				ApiConstant.client.connectionPool().evictAll();
 				response.body().close();
 			}
 		}
