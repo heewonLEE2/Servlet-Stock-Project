@@ -31,8 +31,6 @@ public class StockWaveController extends HttpServlet {
 			command = requestURI.substring(1).substring(0, req.getRequestURI().length() - 11);
 		}
 		
-		System.out.println(command);
-
 		String className = "command." + command.substring(0, 1).toUpperCase() + command.substring(1)
 				+ "Command";
 

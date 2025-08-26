@@ -19,13 +19,13 @@ public class StockInfoCommand extends AbstractStockInfo{
 		
 		String stockName = req.getParameter("name");
 		
-		System.out.println(stockName);
+		// System.out.println(stockName);
 		
 		if(stockName !=null) {
 			
 			stockInfoList = stockInfoService.getStockInfoList(stockName);
 			
-			stockInfoList.stream().forEach(System.out::println);
+			//stockInfoList.stream().forEach(System.out::println);
 			
 			String json = ApiConstant.gson.toJson(stockInfoList);
 
