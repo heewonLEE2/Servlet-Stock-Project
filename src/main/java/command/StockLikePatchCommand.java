@@ -23,7 +23,7 @@ public class StockLikePatchCommand extends AbstractStockJson {
 			}
 		}
 		String requestBody = sb.toString();
-		System.out.println("받은 JSON: " + requestBody);
+		// System.out.println("받은 JSON: " + requestBody);
 
 		JsonObject jsonObj = ApiConstant.gson.fromJson(requestBody, JsonObject.class);
 

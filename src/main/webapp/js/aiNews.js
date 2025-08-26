@@ -62,6 +62,7 @@ function addMessage(content, isUser = false) {
     minute: "2-digit",
   });
 
+  if(!isUser) console.log("addMessage 에서의 content : ", content);
   messageDiv.innerHTML = `
                 ${content}
                 <div class="message-time">${timeString}</div>
@@ -91,13 +92,13 @@ async function getAIResponse(question) {
     },
     body: JSON.stringify({ question }),
   });
-
+  
   if (!response.ok) {
     throw new Error("AI 응답을 가져오는 데 실패했습니다.");
   }
-
-  const data = await response.json();
-  return data.answer;
+  const data = await response.json()
+  // console.log(data.content);
+  return data.content;
 }
 
 // 메시지 전송
@@ -116,9 +117,11 @@ function sendMessage() {
   showTyping();
 
   // AI 응답 시뮬레이션 (2-3초 후)
-  setTimeout(() => {
+  setTimeout(async () => {
     hideTyping();
-    const aiResponse = getAIResponse(message);
+    const aiResponse = await getAIResponse(message); // 응답 기다림
+    console.log("응답 시뮬레이션 : ", aiResponse);
+    
     addMessage(aiResponse);
     sendButton.disabled = false;
     chatInput.focus();
@@ -128,6 +131,7 @@ function sendMessage() {
 // 이벤트 리스너
 sendButton.addEventListener("click", sendMessage);
 
+// enter 키를 눌렀을 경우
 chatInput.addEventListener("keydown", function (e) {
   if (e.key === "Enter" && !e.shiftKey) {
     e.preventDefault();
