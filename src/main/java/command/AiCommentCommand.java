@@ -8,7 +8,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import model.apiUtil.constant.ApiConstant;

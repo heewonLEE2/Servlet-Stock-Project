@@ -27,9 +27,10 @@ public class AiCommentServiceImpl implements AiCommentService {
 	@Override
 	public String aiCommentProc(String question) throws Exception {
 
+		// jackson을 이용해 JSON 형식 만들기
 		ObjectMapper mapper = new ObjectMapper();
 
-		// 요청 JSON 구성 (Responses API)
+		// 요청 JSON 구성
 		ArrayNode input = mapper.createArrayNode();
 		ObjectNode sys = mapper.createObjectNode();
 		sys.put("role", "system");
@@ -68,10 +69,12 @@ public class AiCommentServiceImpl implements AiCommentService {
 		    .build();
 
 		try (Response resp = ApiConstant.client.newCall(request).execute()) {
+			
 		    String respBody = resp.body() != null ? resp.body().string() : "";
+		    
 		    if (!resp.isSuccessful()) {
-		        // 실패 원인 로그 (Responses API는 본문에 에러 사유를 줌)
-		        throw new IOException("OpenAI API 오류: HTTP " + resp.code() + " - " + respBody);
+		        // 실패 원인 로그 
+		        throw new IOException("OpenAI API 오류:  " + resp.code() + " - " + respBody);
 		    }
 
 		    JsonNode rootNode = mapper.readTree(respBody);

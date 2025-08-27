@@ -55,6 +55,19 @@ function addMessage(content, isUser = false) {
 
   messageDiv.className = `message ${isUser ? "user" : "ai"}`;
 
+
+  const textEl = document.createElement("div"); // text div
+  textEl.className = "message-text";
+  textEl.textContent = content;
+
+  const timeEl = document.createElement("div"); // time div 작은 시간 글씨
+  timeEl.className = "message-time";
+  timeEl.textContent = new Date().toLocaleTimeString("ko-KR", {hour:"2-digit", minute:"2-digit"});  // 시간 설정
+
+  messageDiv.append(textEl, timeEl);
+  chatMessages.appendChild(messageDiv);
+  
+  /*
   // 시간 설정
   const now = new Date();
   const timeString = now.toLocaleTimeString("ko-KR", {
@@ -67,18 +80,18 @@ function addMessage(content, isUser = false) {
                 ${content}
                 <div class="message-time">${timeString}</div>
             `;
-
   chatMessages.appendChild(messageDiv);
+	*/
   // 스크롤을 항상 맨 아래로
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-// 타이핑 인디케이터 표시/숨김
+// 타이핑 인디케이터 표시
 function showTyping() {
   typingIndicator.style.display = "block";
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
-
+// 타이핑 인디케이터 숨김
 function hideTyping() {
   typingIndicator.style.display = "none";
 }
@@ -98,6 +111,7 @@ async function getAIResponse(question) {
   }
   const data = await response.json()
   console.log(data.content);
+  hideTyping();
   return data.content;
 }
 
@@ -118,7 +132,7 @@ function sendMessage() {
 
   // AI 응답 시뮬레이션 (2-3초 후)
   setTimeout(async () => {
-    hideTyping();
+    // hideTyping(); 응답이 올때까지 기다리기위해 getAIResponse 안에 코드를 넣음
     const aiResponse = await getAIResponse(message); // 응답 기다림
     // console.log("응답 시뮬레이션 : ", aiResponse);
     
