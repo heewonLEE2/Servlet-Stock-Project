@@ -19,17 +19,16 @@ function getDiviList(year, stockDiviedListSorted){
 					-${date.substring(6, 8)}`;
 			ul.appendChild(li);
 			document.querySelector("#dividendList-list").append(ul);
+			//drawCalendar(date.substring(0, 4), date.substring(4, 6), [date.substring(6, 8)]);
 		}
 	})
 } // getDiviList
 
 function createCalendarTitle(year, month){
-	if(document.querySelector(".date").textContent==""){
-		const p = document.createElement("p");
-		p.id = "p-date";
-		p.innerHTML = `${year}년 ${month}월`;
-		document.querySelector(".date").appendChild(p);
-	} else {
-		document.querySelector("#p-date").textContent==""; 
-	}
+	const dateContainer = document.querySelector(".date");
+	dateContainer.innerHTML = "";
+	const p = document.createElement("p");
+	p.id = "p-date";
+	p.innerHTML = `${year}년 ${month}월`;
+	dateContainer.appendChild(p);
 }

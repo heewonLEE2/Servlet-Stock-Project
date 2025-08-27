@@ -21,6 +21,7 @@ function filterStockYear(stockDiviedListSorted){
 	
 	select.addEventListener("change", (e) => {
 		getDiviList(e.target.value, stockDiviedListSorted);
+		stockMoveCalendar();
 	});
 }
 

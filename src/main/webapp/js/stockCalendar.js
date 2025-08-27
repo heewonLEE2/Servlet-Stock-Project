@@ -3,9 +3,6 @@
  */
 
 function drawCalendar(year, month, highlightDays = []) {
-	console.log("year", year);
-	console.log("month", month);
-
 	const calendar = document.getElementById("calendar");
 	calendar.innerHTML = "";
 	
@@ -21,7 +18,6 @@ function drawCalendar(year, month, highlightDays = []) {
 	// 현재 날짜 1일의 요일
 	// ex) 5이면 금요일부터 1 시작됨
 	const theDay = theDate.getDay();
-	// console.log('theDay' + theDay);
 	
 	// 달마다 마지막 날짜 배열
 	const last = [31,28,31,30,31,30,31,31,30,31,30,31];
@@ -31,12 +27,10 @@ function drawCalendar(year, month, highlightDays = []) {
 	
 	// 현재 월의 마지막 날짜
 	const lastDay = last[month];
-	// console.log('lastDay' + lastDay);
 	
 	// 캘린더 행 계산
 	// 1일이 시작되는 요일의 숫자와 마지막 날짜를 7로 나눈값
 	const row = Math.ceil((theDay+lastDay)/7);
-	// console.log(row);
 	
 	table.innerHTML = `
 		<tr>
@@ -83,9 +77,10 @@ function drawCalendar(year, month, highlightDays = []) {
 			td.innerHTML = dNum;
 			
 	      }
-	      
-	      if(dNum === highlightDays){
-				td.style.backgroundColor = "yellow";
+	      if(dNum == highlightDays && dNum === currentDay){
+				td.style.backgroundColor = "blue";
+		  } else if(dNum == highlightDays){
+			  td.style.backgroundColor = "yellow";
 		  }
 		
 	      //일 증가
@@ -100,11 +95,12 @@ function drawCalendar(year, month, highlightDays = []) {
 
 // 페이지 로드 시 기본 달력
 const today = new Date();
+drawCalendar(today.getFullYear(), today.getMonth(), [today.getDate()]);
 const p = document.createElement("p");
-p.innterHTML
+p.innerHTML
 	= `${today.getFullYear()}년 ${today.getMonth()+1}월`;
 document.querySelector(".date").appendChild(p);
-drawCalendar(today.getFullYear(), today.getMonth(), [today.getDate()]);
+
 
 
 

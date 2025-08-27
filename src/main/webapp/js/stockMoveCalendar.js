@@ -5,9 +5,18 @@
 function stockMoveCalendar(){
 	document.querySelectorAll(".stockDiviLi").forEach(li => {
 		li.addEventListener("click", () => {
+			
 			const dateArr = li.textContent.split("-");
-			drawCalendar(dateArr[0], Number(dateArr[1].substring(1))-1, dateArr[2]);
-			createCalendarTitle(dateArr[0], Number(dateArr[1].substring(1)));
+			let month;
+			
+			if(dateArr[1].substring(0, 1)==1){
+				month = Number(dateArr[1])-1;
+			} else {
+				month = Number(dateArr[1].substring(1))-1;
+			}
+			
+			drawCalendar(dateArr[0], month, [dateArr[2]]);
+			createCalendarTitle(dateArr[0], month + 1);
 		})
 	})
 }
