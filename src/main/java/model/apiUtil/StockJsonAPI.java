@@ -49,10 +49,11 @@ public class StockJsonAPI {
 			ioe.printStackTrace();
 		} finally {
 			if (response.body() != null && response != null) {
+				ApiConstant.client.dispatcher().executorService().shutdown();
+				ApiConstant.client.connectionPool().evictAll();
 				response.body().close();
 			}
 		}
-
 		return StockJsonModel.getStockJsonList();
 	} // getJson
 
@@ -84,6 +85,8 @@ public class StockJsonAPI {
 			ioe.printStackTrace();
 		} finally {
 			if (response.body() != null && response != null) {
+				ApiConstant.client.dispatcher().executorService().shutdown();
+				ApiConstant.client.connectionPool().evictAll();
 				response.body().close();
 			}
 		}
