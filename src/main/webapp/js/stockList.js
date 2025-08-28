@@ -80,16 +80,13 @@ function addstockInfoEventListeners() {
 
 // 주식 좋아요 상태 업데이트 함수
 async function updateStockLike(stockId, newLikeStatus) {
+	
+	const body = new URLSearchParams({  stockId: stockId, newLikeStatus: newLikeStatus });
 	try {
 		const response = await fetch(`http://localhost:8888/stockLikePatch.stockwave`, {
 			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				stockId,
-				isLike: newLikeStatus,
-			}),
+			headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+			body
 		});
 
 		if (response.ok) {
