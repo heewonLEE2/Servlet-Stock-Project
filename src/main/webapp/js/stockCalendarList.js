@@ -19,7 +19,6 @@ function getDiviList(year, stockDiviedListSorted){
 					-${date.substring(6, 8)}`;
 			ul.appendChild(li);
 			document.querySelector("#dividendList-list").append(ul);
-			//drawCalendar(date.substring(0, 4), date.substring(4, 6), [date.substring(6, 8)]);
 		}
 	})
 } // getDiviList

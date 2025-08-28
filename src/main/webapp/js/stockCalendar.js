@@ -77,10 +77,16 @@ function drawCalendar(year, month, highlightDays = []) {
 			td.innerHTML = dNum;
 			
 	      }
-	      if(dNum == highlightDays && dNum === currentDay){
-				td.style.backgroundColor = "blue";
-		  } else if(dNum == highlightDays){
-			  td.style.backgroundColor = "yellow";
+	      
+	      if(dNum == highlightDays){
+			td.style.backgroundColor = "yellow";
+			console.log(month);
+		  } 
+		  
+		  // 오늘 날짜와 배당락일이 같을 때
+		  if(dNum == highlightDays && dNum == currentDay 
+		  	&& month == currentMonth){
+			  td.style.backgroundColor = "blue";
 		  }
 		
 	      //일 증가
@@ -91,19 +97,51 @@ function drawCalendar(year, month, highlightDays = []) {
 	}    
 	
 	calendar.appendChild(table);
+	arrowClickToMoveCalendar(year, month, highlightDays);
 }
 
+
+
 // 페이지 로드 시 기본 달력
-const today = new Date();
-drawCalendar(today.getFullYear(), today.getMonth(), [today.getDate()]);
-const p = document.createElement("p");
-p.innerHTML
-	= `${today.getFullYear()}년 ${today.getMonth()+1}월`;
-document.querySelector(".date").appendChild(p);
+//const today = new Date();
+//drawCalendar(today.getFullYear(), today.getMonth(), [today.getDate()]);
+//createCalendarTitle(today.getFullYear(), Number(today.getMonth())+1);
 
+function arrowClickToMoveCalendar(year, month, days){
+	
+	document.querySelector("#leftArrow")
+		.addEventListener("click", () => {
+			const prevDate = new Date(year, month - 1, 1);
+			console.log("prevDate", prevDate.getMonth());
+			drawCalendar(prevDate.getFullYear(), prevDate.getMonth(), [days]);
+			createCalendarTitle(prevDate.getFullYear(), prevDate.getMonth()+1);
+	})
+	
+	document.querySelector("#rightArrow")
+		.addEventListener("click", () => {
+			const nextDate = new Date(year, month + 1, 1);
+			console.log("nextDate", nextDate.getMonth());
+			drawCalendar(nextDate.getFullYear(), nextDate.getMonth(), [days]);
+			createCalendarTitle(nextDate.getFullYear(), nextDate.getMonth()+1);
+	})
+	
+}
 
+function initCalendar(){
+	
+	// 페이지 로드 시 현재 날짜 달력 출력됨
+	const today = new Date();
+	const year = today.getFullYear();
+	const month = today.getMonth();
+	const days = today.getDate();
+	
+	drawCalendar(today.getFullYear(), today.getMonth(), [today.getDate()]);
+	createCalendarTitle(today.getFullYear(), Number(today.getMonth())+1);
+	arrowClickToMoveCalendar(year, month, days);
+	
+}
 
-
+initCalendar();
 
 
 

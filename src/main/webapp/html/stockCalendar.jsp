@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/headerFooter.css" />
     <link rel="stylesheet" href="../css/stockCalendar.css" />
+    <script src="../js/stockCalendarList.js" defer></script>
     <script src="../js/stockCalendar.js" defer></script>
     <script src="../js/header.js" defer></script>
     <script src="../js/stockDividendDate.js" defer></script>
-    <script src="../js/stockCalendarList.js" defer></script>
     <script src="../js/stockYearFilter.js" defer></script>
     <script src="../js/stockMoveCalendar.js" defer></script>
   </head>
@@ -28,11 +28,11 @@
           <div id="resultContainer">
             <div id="calendar-container">
               <div id="calendar-title">
-                <div class="arrow">
+                <div id="leftArrow" class="arrow">
                   <img src="/css/assets/left-arrow.png" alt="arrow">
                 </div>
                 <div class="date"></div>
-                <div class="arrow">
+                <div id="rightArrow" class="arrow">
                   <img src="/css/assets/right-arrow.png" alt="arrow">
                 </div>
               </div>

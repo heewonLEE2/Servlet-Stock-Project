@@ -21,7 +21,6 @@ public class StockCalendarCommand extends AbstractStockDivi {
 		StockDiviService stockService = new StockDiviServiceImpl();
 
 		String itmsName = req.getParameter("itmsName");
-		System.out.println(itmsName);
 
 		List<StockDividendInfoVO> stockList = null;
 		if (itmsName != null) {

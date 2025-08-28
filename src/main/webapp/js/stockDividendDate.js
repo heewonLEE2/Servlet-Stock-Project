@@ -13,7 +13,7 @@ const getStockDivied = async () => {
     document.querySelector(".date").innerHTML = "";
 	
 	if(data&&data.length>0){
-		p.innerHTML = "";
+		// document.querySelector("#p-date").innerHTML = "";
 		
 		const stockDiviedListSorted = data.sort().reverse();
 	    const firstDate = data[0];
@@ -31,6 +31,7 @@ const getStockDivied = async () => {
 		filterStockYear(stockDiviedListSorted);
 		// 리스트 선택 시 해당 날짜로 캘린더 이동
 		stockMoveCalendar();
+		
 	}
 	
   } catch(error) {

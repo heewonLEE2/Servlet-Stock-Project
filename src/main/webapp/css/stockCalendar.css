@@ -110,6 +110,7 @@ table td {
 .arrow img{
   width: 25px;
   height: 25px;
+  cursor: pointer;
 }
 
 /* 캘린더 제목 날짜 */
