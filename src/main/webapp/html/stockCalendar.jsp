@@ -9,12 +9,9 @@
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/headerFooter.css" />
     <link rel="stylesheet" href="../css/stockCalendar.css" />
-    <script src="../js/stockCalendarList.js" defer></script>
-    <script src="../js/stockCalendar.js" defer></script>
     <script src="../js/header.js" defer></script>
-    <script src="../js/stockDividendDate.js" defer></script>
-    <script src="../js/stockYearFilter.js" defer></script>
-    <script src="../js/stockMoveCalendar.js" defer></script>
+    <script src="../js/stockCalendarState.js" defer></script>
+    <script src="../js/stockCalendarApp.js" defer></script>
   </head>
   <body>
     <%@include file="header.jsp" %>
