@@ -1,5 +1,5 @@
 /**
- * 
+ * 상태 객체, 함수
  */
 
 const exdateCalendarState = {
@@ -12,7 +12,8 @@ const exdateCalendarState = {
   stock: {
     keyword: null, // 검색한 종목명
     diviList: [], // 특정 연도 배당락일 리스트
-    years: [] // 선택가능한 연도 목록		
+    years: [], // 선택가능한 연도 목록
+    names: [] // 종목명 목록
   },
   ui: {
     loading: false, // API 로딩 상태

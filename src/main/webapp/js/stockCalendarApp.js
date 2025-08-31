@@ -1,5 +1,5 @@
 /**
- * 
+ * api, 이벤트리스너
  */
 
 initCalendar();
@@ -14,7 +14,15 @@ stockInput.addEventListener("input", e => {
 });
 
 stockInput.addEventListener("keydown", e => {
-  if (e.key === "Enter") {getStockDivied();}}); 
+	
+	console.log(exdateCalendarState.stock.names);
+	exdateCalendarState.stock.names.forEach(stock => {
+		if(e.target.value == stock){
+	 		console.log("json과 검색한 종목명이 같음");
+		}
+	})
+  if (e.key === "Enter") {getStockDivied();}}
+); 
   
 /**
  * 배당락일 API 호출
@@ -59,3 +67,23 @@ const getStockDivied = async () => {
     exdateCalendarState.ui.loading = false;
   }
 }; 
+
+const getStockJsonApi = async () => {
+	try{
+		const response = await fetch(
+     		`http://localhost:8888/stockList.stockwave`
+    	);
+    	const data = await response.json();
+    	
+    	if(data&&data.length>0){
+			data.forEach(stock => {
+				exdateCalendarState.stock.names.push(stock.name);
+			})
+		}
+		
+	} catch(err){
+		console.error(err);
+	}
+}
+
+getStockJsonApi();
