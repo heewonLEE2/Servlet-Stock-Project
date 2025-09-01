@@ -203,6 +203,34 @@ function stockMoveCalendar() {
 }
 
 /**
+ * input 입력 시 검색어 자동완성창 ul, li 생성 함수
+ */
+
+function createInputSearchAutocompleteWindow(exdateCalendarState, keyword){
+	const ul = document.createElement("ul");
+	ul.id = "autocomplete-ul";
+	
+	exdateCalendarState.stock.names
+		.filter(name => name.includes(keyword))
+		.forEach(name => {
+			const li = document.createElement("li");
+			li.className = "autocomplete-li";
+			li.innerHTML = `${name}`;
+			
+			li.addEventListener("click", () => {
+				document.querySelector("#search-input").value = name;
+				ul.style.display = "none";
+				
+          		getStockDivied(name);
+			})
+			
+			ul.append(li);
+		})
+	
+	document.getElementById("autocompleteContainer").append(ul);
+}
+
+/**
  * 초기화
  */
 function initCalendar() {

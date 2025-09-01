@@ -13,25 +13,27 @@ stockInput.addEventListener("input", e => {
 	exdateCalendarState.stock.keyword = e.target.value;
 });
 
-stockInput.addEventListener("keydown", e => {
+stockInput.addEventListener("keyup", e => {
 	
-	console.log(exdateCalendarState.stock.names);
-	exdateCalendarState.stock.names.forEach(stock => {
-		if(e.target.value == stock){
-	 		console.log("json과 검색한 종목명이 같음");
-		}
-	})
-  if (e.key === "Enter") {getStockDivied();}}
+	const keyword = e.target.value.trim();
+	document.querySelector("#autocompleteContainer").innerHTML = "";
+	
+	if(keyword.length > 0){
+		createInputSearchAutocompleteWindow(exdateCalendarState, keyword);
+	}
+	
+   //if (e.key === "Enter") {getStockDivied();}
+   }
 ); 
   
 /**
  * 배당락일 API 호출
  */
-const getStockDivied = async () => {
+const getStockDivied = async (name) => {
   try {
     exdateCalendarState.ui.loading = true;
     const response = await fetch(
-      `http://localhost:8888/stockCalendar.stockwave?itmsName=${exdateCalendarState.stock.keyword}`
+      `http://localhost:8888/stockCalendar.stockwave?itmsName=${name}`
     );
     const data = await response.json();
 

@@ -21,6 +21,7 @@
           <div id="searchContainer">
             <img id="search" src="/css/assets/search.png" alt="search">
             <input id="search-input" type="text" name="itmsName" placeholder="원하는 회사를 입력하세요! ex)삼성전자" />
+          	<div id="autocompleteContainer"></div>
           </div>
           <div id="resultContainer">
             <div id="calendar-container">
