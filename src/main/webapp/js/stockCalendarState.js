@@ -98,17 +98,35 @@ const drawCalendar = (year, month, stockDiviedListSorted = [], today = null) => 
 
         // 배당락일 표시
         for (let date of stockDiviedListSorted) {
-          if (dNum === date.day && month === date.month 
-          		&& year === date.year) {
-			const div = document.createElement("div");
-			div.id = "exdate";
-			const p = document.createElement("p");
-			p.innerHTML = dNum;
-			div.appendChild(p);
-			td.append(div);
-          }
+			
+			// 캘린더 년도, 월, api의 일의 date 객체 생성		  
+			const exDate = new Date(year, month, date.day);
+			// api의 날짜
+			let exDateDay = date.day;
+			// exDate의 요일
+			const dayOfWeek = exDate.getDay();
+			
+			// 토요일이면 하루 뺌 -> 금요일
+			if(dayOfWeek === 6) exDateDay -= 1;
+			// 일요일이면 이틀 뺌 -> 금요일
+			if(dayOfWeek === 0) exDateDay -= 2;
+			
+			// 캘린더의 날짜와 주말 제외한 날짜가 같고
+			// 캘린더의 년도, 월이 api의 년, 월과 같으면
+			if(dNum == exDateDay && date.year == year 
+				&& date.month == month){
+					
+				// div, p 생성 후
+				const div = document.createElement("div");
+				div.id = "exdate";
+				const p = document.createElement("p");
+				
+				// p에 캘린더 날짜 넣음
+				p.innerHTML = dNum;
+				div.appendChild(p);
+				td.append(div);
+			}
         }
-
         dNum++; // 일 증가
       }
       tr.appendChild(td);
@@ -157,12 +175,22 @@ function getDiviList(year, stockDiviedListSorted) {
 
   stockDiviedListSorted.forEach(date => {
 	  
+	  // 주말 제외 로직
+	  const exDate = new Date(year, date.month, date.day);
+	  let exDateDay = date.day;
+	  const dayOfWeek = exDate.getDay();
+			
+	  if(dayOfWeek === 6) exDateDay -= 1;
+	  if(dayOfWeek === 0) exDateDay -= 2;
+	  
 	// api의 배당락일의 년도와 캘린더의 년도가 같을 경우
 	// li 추가
     if (date.year === year) { 
       const li = document.createElement("li");
       li.className = "stockDiviLi";
-      li.textContent = `${date.year}-${String(date.month + 1).padStart(2, "0")}-${String(date.day).padStart(2, "0")}`;
+      li.textContent 
+      	= `${date.year}-${String(date.month + 1).padStart(2, "0")}
+      		-${String(exDateDay).padStart(2, "0")}`;
       ul.appendChild(li);
     }
   });

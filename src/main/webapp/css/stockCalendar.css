@@ -8,6 +8,7 @@
   flex-direction: column;
   padding: 10px;
   box-sizing: border-box;
+  margin-top: 30px;
 }
 
 /* 검색창 컨테이너 */
@@ -46,6 +47,7 @@
   flex-wrap: wrap; 
   justify-content: center;
   gap: 20px;
+  margin-top: 40px;
 }
 
 /* 캘린더와 리스트 */
@@ -187,7 +189,12 @@ table td {
   padding: 5px 20px;
 }
 
-/* 배당락일 리스트  */
+/* 배당락일 리스트 ul  */
+#stockDiviUl {
+	padding: 0;
+}
+
+/* 배당락일 리스트 li  */
 .stockDiviLi {
 	cursor: pointer;
 	list-style: none;
