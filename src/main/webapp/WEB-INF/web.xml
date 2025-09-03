@@ -18,7 +18,6 @@
 		<url-pattern>*.stockwave</url-pattern>
 	</servlet-mapping>
 
-
 </web-app>
 
 
