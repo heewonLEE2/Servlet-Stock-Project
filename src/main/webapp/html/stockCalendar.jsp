@@ -7,9 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>배당락일 캘린더</title>
     <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/headerFooter.css" />
     <link rel="stylesheet" href="../css/stockCalendar.css" />
-    <script src="../js/header.js" defer></script>
     <script src="../js/stockCalendarState.js" defer></script>
     <script src="../js/stockCalendarApp.js" defer></script>
   </head>
